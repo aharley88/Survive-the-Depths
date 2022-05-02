@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -13,9 +15,12 @@ public class PlayerScript : MonoBehaviour
     public WeaponScript weaponSc;
     public int maxHealth = 20;
     public int curHealth = 20;
+    public string menuScene;
+    Text upgrade;
 
     private void Start()
     {
+        upgrade = GetComponent<Text>();
         time = gameObject.GetComponent<Stopwatch>();
         weaponSc = gameObject.GetComponentInChildren<WeaponScript>();
     }
@@ -53,7 +58,12 @@ public class PlayerScript : MonoBehaviour
             print("You survived for " + x + " minutes!");
             upgrades();
         }
-        
+
+        if (curHealth == 0) {
+            print("Game over!");
+            SceneManager.LoadScene(menuScene);
+        }
+
     }
 
     void upgrades() {
@@ -64,15 +74,24 @@ public class PlayerScript : MonoBehaviour
                 print("Speed upgrade!");
                 speed.x += 10;
                 speed.y += 10;
+                StartCoroutine(FadeTextToFullAlpha(1f, upgrade));
+                upgrade.text = ("Speed upgrade!");
+                StartCoroutine(FadeTextToZeroAlpha(1f, upgrade));
                 break;
             case 2:
                 print("Damage upgrade!");
                 weaponSc.damage += 10;
+                StartCoroutine(FadeTextToFullAlpha(1f, upgrade));
+                upgrade.text = ("Damage upgrade!");
+                StartCoroutine(FadeTextToZeroAlpha(1f, upgrade));
                 break;
             case 3:
                 print("Health upgrade!");
                 maxHealth += 10;
                 curHealth += 10;
+                StartCoroutine(FadeTextToFullAlpha(1f, upgrade));
+                upgrade.text = ("Health upgrade!");
+                StartCoroutine(FadeTextToZeroAlpha(1f, upgrade));
                 break;
         }
     }
@@ -90,6 +109,28 @@ public class PlayerScript : MonoBehaviour
         {
             print("Ouch!");
             curHealth -= collision.GetComponent<EnemyScript>().damage;
+        }
+    }
+
+    //text fade code from https://forum.unity.com/threads/fading-in-out-gui-text-with-c-solved.380822/
+
+    public IEnumerator FadeTextToFullAlpha(float t, Text upgrade)
+    {
+        upgrade.color = new Color(upgrade.color.r, upgrade.color.g, upgrade.color.b, 0);
+        while (upgrade.color.a < 1.0f)
+        {
+            upgrade.color = new Color(upgrade.color.r, upgrade.color.g, upgrade.color.b, upgrade.color.a + (Time.deltaTime / t));
+            yield return null;
+        }
+    }
+
+    public IEnumerator FadeTextToZeroAlpha(float t, Text upgrade)
+    {
+        upgrade.color = new Color(upgrade.color.r, upgrade.color.g, upgrade.color.b, 1);
+        while (upgrade.color.a > 0.0f)
+        {
+            upgrade.color = new Color(upgrade.color.r, upgrade.color.g, upgrade.color.b, upgrade.color.a - (Time.deltaTime / t));
+            yield return null;
         }
     }
 }

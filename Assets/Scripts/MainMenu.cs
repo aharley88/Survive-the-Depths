@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
     public string startGameScene;
+    public string helpScreenScene;
 
     // Start is called before the first frame update
     void Start()
@@ -18,12 +20,12 @@ public class MainMenu : MonoBehaviour
         
     }
 
-    public void StartGame() { 
-        
+    public void StartGame() {
+        SceneManager.LoadScene(startGameScene);
     }
 
-    public void HelpScreen() { 
-    
+    public void HelpScreen() {
+        SceneManager.LoadScene(helpScreenScene);
     }
 
     public void QuitGame() {

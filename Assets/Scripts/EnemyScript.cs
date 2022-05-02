@@ -14,7 +14,7 @@ public class EnemyScript : MonoBehaviour
     public int maxHealth = 20;
     public int curHealth = 20;
     public Spawner sp;
-    public WaveScript waveScript;
+    //public WaveScript waveScript;
     public GameObject Player;
     public WeaponScript weaponSc;
     public GameObject Enemy ;
