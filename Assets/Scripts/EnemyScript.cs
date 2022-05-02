@@ -13,12 +13,9 @@ public class EnemyScript : MonoBehaviour
     private Vector2 movementPerSec;
     public int maxHealth = 20;
     public int curHealth = 20;
-    public Spawner sp;
-    //public WaveScript waveScript;
     public GameObject Player;
     public WeaponScript weaponSc;
-    public GameObject Enemy ;
-    //public EnemiesDefeated defeat;
+    public GameObject Enemy;
     public int enemiesDefeated;
     public int score = 1;
     public int damage = 5;
@@ -28,7 +25,6 @@ public class EnemyScript : MonoBehaviour
     //enemy movement from https://answers.unity.com/questions/1359733/moving-an-enemy-randomly.html
     void Start()
     {
-        //enabled = true;
         latestDirectionChangeTime = 0f;
         calculateNewMovementVector();
         this.gameObject.SetActive(true);

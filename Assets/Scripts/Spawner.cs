@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //spawner code from https://thehardestwork.com/2020/12/10/how-to-build-a-spawner-in-unity/
 
@@ -12,6 +13,7 @@ public class Spawner : MonoBehaviour
     public int limit = 20;
     public float rateOfSpawn;
     float spawnTimer;
+    public string menuScene;
 
     // Start is called before the first frame update
     void Start()
@@ -26,13 +28,13 @@ public class Spawner : MonoBehaviour
             spawnTimer -= Time.deltaTime;
             if (spawnTimer <= 0f)
             {
-                if (transform.childCount < 0)
+                if (transform.childCount == 0)
                 {
                     print("You're finished!");
                     numberToSpawn = 0;
                     rateOfSpawn = 0;
                     enabled = false;
-                    Debug.Break();
+                    SceneManager.LoadScene(menuScene);
                     return;
                 }
                 else if (transform.childCount > 0)
