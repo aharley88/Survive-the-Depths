@@ -698,6 +698,7 @@ GameObject:
   - component: {fileID: 515974201}
   - component: {fileID: 515974203}
   - component: {fileID: 515974202}
+  - component: {fileID: 515974204}
   m_Layer: 5
   m_Name: upgrade
   m_TagString: Untagged
@@ -764,6 +765,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 515974200}
   m_CullTransparentMesh: 0
+--- !u!114 &515974204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 515974200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e80ce1959ff8a544b87b5fbe056dc7ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: {x: 25, y: 25}
+  time: {fileID: 0}
+  x: 1
+  weaponSc: {fileID: 0}
+  maxHealth: 20
+  curHealth: 20
+  menuScene: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1035,7 +1055,6 @@ MonoBehaviour:
   movementDirec: {x: 0, y: 0}
   maxHealth: 20
   curHealth: 20
-  sp: {fileID: 0}
   Player: {fileID: 988188989}
   weaponSc: {fileID: 0}
   Enemy: {fileID: 772750554}
@@ -1329,7 +1348,6 @@ MonoBehaviour:
   movementDirec: {x: 0, y: 0}
   maxHealth: 20
   curHealth: 20
-  sp: {fileID: 0}
   Player: {fileID: 988188989}
   weaponSc: {fileID: 0}
   Enemy: {fileID: 935933720}
@@ -1674,7 +1692,6 @@ MonoBehaviour:
   movementDirec: {x: 0, y: 0}
   maxHealth: 20
   curHealth: 20
-  sp: {fileID: 0}
   Player: {fileID: 988188989}
   weaponSc: {fileID: 0}
   Enemy: {fileID: 1183128867}
@@ -1711,6 +1728,7 @@ MonoBehaviour:
   numberToSpawn: 1
   limit: 20
   rateOfSpawn: 2.5
+  menuScene: 
 --- !u!1 &1278244821
 GameObject:
   m_ObjectHideFlags: 0
@@ -2769,7 +2787,6 @@ MonoBehaviour:
   movementDirec: {x: 0, y: 0}
   maxHealth: 20
   curHealth: 20
-  sp: {fileID: 0}
   Player: {fileID: 988188989}
   weaponSc: {fileID: 0}
   Enemy: {fileID: 2008744310}
