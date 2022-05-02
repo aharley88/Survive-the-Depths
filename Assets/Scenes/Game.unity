@@ -1728,7 +1728,7 @@ MonoBehaviour:
   numberToSpawn: 1
   limit: 20
   rateOfSpawn: 2.5
-  menuScene: 
+  menuScene: Menu
 --- !u!1 &1278244821
 GameObject:
   m_ObjectHideFlags: 0
